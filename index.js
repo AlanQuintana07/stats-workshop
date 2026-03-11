@@ -3,7 +3,7 @@
  * @returns {number} the length of the array
  */
 function getLength(numbers) {
-  // TODO
+  return numbers.length;
 }
 
 /**
@@ -11,7 +11,7 @@ function getLength(numbers) {
  * @returns {number} the sum of the numbers
  */
 function getSum(numbers) {
-  // TODO
+  return numbers.reduce((sum, num) => (sum = num), 0);
 }
 
 /**
@@ -19,15 +19,33 @@ function getSum(numbers) {
  * @returns {number} the mean of the numbers
  */
 function getMean(numbers) {
-  // TODO
+  if (numbers.length === 0) return 0;
+
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+
+  const mean = sum / numbers.length;
+  return mean;
 }
+// TODO
 
 /**
  * @param {number[]} numbers an array of integers
  * @returns {number} the smallest of the numbers
  */
 function getMin(numbers) {
-  // TODO
+  if (numbers.length === 0) return undefined;
+
+  let min = numbers[0];
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < min) {
+      min = numbers[i];
+    }
+  }
+  return min;
 }
 
 /**
@@ -35,7 +53,17 @@ function getMin(numbers) {
  * @returns {number} the largest of the numbers
  */
 function getMax(numbers) {
-  // TODO
+  if (numbers.length === 0) return undefined;
+
+  let max = numbers[0];
+
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > max) {
+      max = numbers[i];
+    }
+  }
+
+  return max;
 }
 
 /**
@@ -43,7 +71,9 @@ function getMax(numbers) {
  * @returns {number} the range of the numbers (max - min)
  */
 function getRange(numbers) {
-  // TODO
+  if (numbers.length === 0) return undefined;
+
+  return getMax(numbers) - getMin(numbers);
 }
 
 /**
@@ -51,7 +81,7 @@ function getRange(numbers) {
  * @returns {number[]} the even numbers in the array
  */
 function getEvens(numbers) {
-  // TODO
+  return numbers.filter((num) => num % 2 === 0);
 }
 
 /**
@@ -59,7 +89,7 @@ function getEvens(numbers) {
  * @returns {number[]} the odd numbers in the array
  */
 function getOdds(numbers) {
-  // TODO
+  return numbers.filter((num) => num % 2 !== 0);
 }
 
 // === READ BUT DO NOT EDIT THE CODE BELOW ===
@@ -99,7 +129,7 @@ function describeNumbers(numbers) {
 
 const userInputString = prompt(
   "Please enter some integers separated by commas.",
-  "28,-15,30,975,400"
+  "28,-15,30,975,400",
 );
 const numbers = convertStringToNumbers(userInputString);
 describeNumbers(numbers);
